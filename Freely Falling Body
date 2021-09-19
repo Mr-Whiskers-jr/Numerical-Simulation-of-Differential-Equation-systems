@@ -1,0 +1,30 @@
+%Numerical Solution to the freely falling body problem%
+s=input("enter value for height in meters") ; %takes the input of distance or heinght in meters%
+m=input("enter value for mass in kg") ; %takes the input of mass in kg% 
+g=9.81 ;  %gravitational accelerational in ms^-2%
+k=50 ;    %arbitrary constant%
+s_0=0 ;   %to graph distance%
+v=0 ;     %defined veloity variable%
+dv=0 ;    %velocity step varuiable%
+t=0.001 ;  %the time begining%
+dt=0.001 ; %the difference in time or the step%
+subplot(1,2,1)
+hold on
+subplot(1,2,2)
+hold on
+while s>=0
+    dv=(g-((k/m)*v))*dt ;
+    v=v+dv ;
+    disp(v) ;
+    subplot(1,2,1)
+    plot(t,v,'-rx')
+    title("Velocity vs time")
+    s_0=v*t ;
+    s=s-s_0 ;
+    subplot(1,2,2)
+    plot(t,s,'-gx')
+    title('distance vs time')
+    t=t+dt ;
+end
+fprintf('velocity is =%f\n', v)
+fprintf('time taken is%f\n', t)
